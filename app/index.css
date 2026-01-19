@@ -1,57 +1,89 @@
-.card-area{
-    width: 80%;
+body {
+    margin: 0;
+    background-color: rgb(200, 200, 200);
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
+    place-items: center center;
+  }
+  
+  .card-wrap {
+    width: 60%;
     height: 80%;
-    border: 3px solid black;
-}
-
-.card {
-    width: 100%;
-    height: 100%;
+    border: 1px solid black;
     position: relative;
-    backface-visibility: hidden;
-    transition: .7s;
-}
-
-/* 앞면 , 뒷면 */
-.card > div{
-    position: absolute;
+  }
+  
+  .card {
     width: 100%;
     height: 100%;
+    backface-visibility: hidden;
+    transition: .3s;
+  }
+  
+  .card>div {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 32px;
-    font-weight: 700;
+    font-size: 5em;
+  }
+  
+  .card-wrap.active>.card {
+    transform: rotateY(180deg);
+  }
+  
+  .back {
     background-color: black;
     color: white;
-    border-radius: 15px;
-}
-
-.card-front{
-    
-}
-.card-back{
     transform: rotateY(180deg);
-}
-
-.flip > .card{
-    transform: rotateY(180deg);
-}
-
-main{
-    background-color: rgba(0, 0, 0, 0.2);
-    width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(10 , 100px);
-    grid-auto-rows: 120px;
-    place-items: center center;
-    place-content: center center;
-}
-
-
-.hide{
-    visibility: hidden;
-}
-
-
+  }
+  
+  .front {
+    background-color: black;
+    color: gray;
+  }
+  
+  .good {
+    border: 15px solid white;
+    animation: border-color-change 7s infinite;
+  }
+  
+  @keyframes border-color-change {
+    0% {
+      border-color: red;
+    }
+  
+    14% {
+      border-color: orange;
+    }
+  
+    28% {
+      border-color: yellow;
+    }
+  
+    42% {
+      border-color: green;
+    }
+  
+    57% {
+      border-color: blue;
+    }
+  
+    71% {
+      border-color: indigo;
+    }
+  
+    85% {
+      border-color: violet;
+    }
+  
+    100% {
+      border-color: red;
+    }
+  }
