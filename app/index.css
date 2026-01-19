@@ -50,6 +50,8 @@ main{
 }
 
 
-
+.hide{
+    visibility: hidden;
+}
 
 

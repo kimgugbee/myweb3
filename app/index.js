@@ -1,8 +1,46 @@
+let selectedCard01 = null;
+let selectedCard02 = null;
+let v01;
+let v02;
+
 function setListenerToCard(){
     const cardAreaArr = document.querySelectorAll(".card-area");
     for(const cardArea of cardAreaArr){
         cardArea.addEventListener("click" , function(evt){
 
+            if(cardArea === selectedCard01){
+                return;
+            }
+
+            if(selectedCard01 === null){
+                selectedCard01 = cardArea;
+                v01 = selectedCard01.children[0].children[0].innerHTML;
+            }else if(selectedCard02 === null){
+                selectedCard02 = cardArea;
+                v02 = selectedCard02.children[0].children[0].innerHTML;
+            }
+
+            if(v01 === v02){
+                const removeCard01 = selectedCard01;
+                const removeCard02 = selectedCard02;
+                setTimeout(() => {
+                    removeCard01.classList.add("hide");
+                    removeCard01.children[0].classList.add("hide");
+                    removeCard01.children[0].children[0].classList.add("hide");
+                    removeCard01.children[0].children[1].classList.add("hide");
+
+                    removeCard02.classList.add("hide");
+                    removeCard02.children[0].classList.add("hide");
+                    removeCard02.children[0].children[0].classList.add("hide");
+                    removeCard02.children[0].children[1].classList.add("hide");
+                }, 2000);
+            }
+
+            if(selectedCard02 !== null){
+                selectedCard01 = null;
+                selectedCard02 = null;
+            }
+            
             const temp = evt.currentTarget;
             temp.classList.toggle("flip");
 
